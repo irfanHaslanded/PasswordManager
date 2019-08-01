@@ -17,13 +17,14 @@ All application data is stored in a file passwdMgr.<userName>.dat
 # Usage:
 passwd-mgr
   # commands
+  ```
   login
   create-password username@site
   show-passwprd username@site
   show-accounts
   logout
   exit
-
+  ```
 # Example
 ```
 C:\Users\snowWhite> passwd-mgr
