@@ -25,7 +25,7 @@ passwd-mgr
   exit
 
 # Example
-
+```
 C:\Users\snowWhite> passwd-mgr
 passMgr> login
 Enter username: SnowWhite
@@ -57,5 +57,4 @@ snowIsWhite@twitter.com
 SnowWhite@passMgr> logout
 
 passMgr> exit
-
-
+```
