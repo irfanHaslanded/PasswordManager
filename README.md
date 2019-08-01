@@ -32,29 +32,17 @@ Enter username: SnowWhite
 Enter Master Password: 
 Confirm master password:
 Successfully generated a master password.
-
 SnowWhite@passMgr> create-password snowgirl@google.com
-
 Password is: x&:@6R?!Q{wFm_.)
-
 SnowWhite@passMgr> show-password snowgirl@google.com
-
 Password is: x&:@6R?!Q{wFm_.)
-
 SnowWhite@passMgr> create-password snowIsWhite@twitter.com
-
 Password is: W\kry{Z88<98E2dr
-
 SnowWhite@passMgr> create-password snowIsWhite@twitter.com
-
 Password is: VBP9p;Tw2s;gZ);_
-
 SnowWhite@passMgr> show-accounts
-
 snowgirl@google.com
 snowIsWhite@twitter.com
-
 SnowWhite@passMgr> logout
-
 passMgr> exit
 ```
