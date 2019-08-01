@@ -3,7 +3,7 @@ A secure password manager, that can create very strong passwords for you, for a 
 
 # Details
 When you really need to keep your passwords safe.
-All application data is stored in a file passwdMgr.<userName>.dat
+All application data is stored in a file passwdMgr.\<userName\>.dat
 
 1. There are 2 secrets derived from your master password
    a. The first secret is used for logging you into the program
