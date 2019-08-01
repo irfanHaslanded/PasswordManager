@@ -41,4 +41,10 @@ typedef struct {
   char app_salt[32];              // salt to use for app password creation using master password
   AccountData account_data[1024]; // max of 1024 accounts per user
 } UserData;
+
+typedef struct {
+   UserData data;
+   Users *next;
+} Users; // Linked List of users.
+
 ```
