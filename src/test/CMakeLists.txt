@@ -1,8 +1,10 @@
 project (Test_PasswordManager)
 
 # where is your gtest installed?
-set(CMAKE_LIBRARY_PATH $HOME/install/lib)
-set(CMAKE_INCLUDE_PATH $HOME/install/include)
+set(HOME "$ENV{HOME}")
+
+set(CMAKE_LIBRARY_PATH ${HOME}/install/lib)
+set(CMAKE_INCLUDE_PATH ${HOME}/install/include)
 
 enable_testing()
 find_package(GTest REQUIRED)
