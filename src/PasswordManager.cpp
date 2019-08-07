@@ -1,6 +1,12 @@
 #include <sstream>
 #include <string>
 
+extern "C" {
+
+#include <termios.h>
+#include <unistd.h>
+}
+
 #include "PasswordManager.h"
 #include "Storage.h"
 
@@ -88,7 +94,7 @@ void PasswordManager::start() {
     }
   }
 
-  static std::string getLoginName() {
+  static std::string readLoginName() {
     std::string name;
     std::cout << "Enter username: ";
     std::cin >> name;
@@ -99,10 +105,23 @@ void PasswordManager::start() {
     return name;
   }
 
+  static std::string readPassword() {
+    std::string password;
+
+    termios oldt;
+    tcgetattr(STDIN_FILENO, &oldt);
+    termios newt = oldt;
+    newt.c_lflag &= ~ECHO;
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+    std::cin >> password;
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+    return password;
+  }
+
   bool PasswordManager::login() {
     char buf[32];
 
-    std::string name = getLoginName();
+    std::string name = readLoginName();
     std::string pass, confirmPass;
     if (name.length() == 0) {
       return false;
@@ -111,7 +130,7 @@ void PasswordManager::start() {
     if (users.doesUserExist(name)) {
       do {
         std::cout << "Enter password: ";
-        std::cin >> pass;
+        pass = readPassword();
       } while (!users.validatePassword(name, pass));
 
     } else {
@@ -187,17 +206,19 @@ void PasswordManager::start() {
   bool PasswordManager::signup() {
     std::string pass;
     std::string confirmPass;
-    std::string name = getLoginName();
+    std::string name = readLoginName();
     // Create the user
     if (users.doesUserExist(name)) {
       std::cout << "User name is not available" << std::endl;
       return false;
     }
     do {
+
       std::cout << "Enter Master Password: ";
-      std::cin >> pass;
-      std::cout << "Confirm master password: ";
-      std::cin >> confirmPass;
+      pass = readPassword();
+
+      std::cout << std::endl << "Confirm master password: ";
+      confirmPass = readPassword();
 
     } while (pass.compare(confirmPass) != 0);
 
