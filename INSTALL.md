@@ -1,7 +1,7 @@
 # Installation Instructions
 
 ### Option 1. **Download the binary** relevant to your platform from 
-(https://github.com/irfanHaslanded/PasswordManager/releases/download/v1.0.0/PasswordManager)
+(https://github.com/irfanHaslanded/PasswordManager/releases)
 
 ### Option 2. **Build from source code**
 
