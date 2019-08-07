@@ -15,8 +15,9 @@
 ```
 #### 2. **from the root directory of the source code**
 ```
-   a. mkdir build; cd build;
-   b. cmake ..;
-   c. make
-   d. make test
+   0. cd PasswordManager/
+   a. mkdir build; cd build; # build directory
+   b. cmake ../src; # to create the make files
+   c. make # to generate the application binaries
+   d. make test # to run the tests
 ```
