@@ -14,11 +14,11 @@ class Test_UserData : public testing::Test {};
 
 TEST(Test_UserData, basic) {
   UserData d("password");
-  string account_name("snowwhite@stories.com");
+  std::string account_name("snowwhite@stories.com");
   d.addAccount(account_name);
 
-  cout << "master hash is " << d.getMasterHash() << endl;
-  cout << "application hash is " << d.getAppHash() << endl;
+  std::cout << "master hash is " << d.getMasterHash() << std::endl;
+  std::cout << "application hash is " << d.getAppHash() << std::endl;
 
   ASSERT_EQ(36, d.getAppSalt().length());
   ASSERT_STREQ(d.getAccountPassword(account_name).c_str(),
@@ -26,10 +26,10 @@ TEST(Test_UserData, basic) {
 }
 TEST(Test_UserData, listAccounts) {
   UserData d("password");
-  string account_name("snowwhite@stories.com");
+  std::string account_name("snowwhite@stories.com");
   d.addAccount(account_name);
   d.addAccount("cinderella@stories.com");
-  vector<string> expected_result;
+  std::vector<std::string> expected_result;
   expected_result.push_back("cinderella@stories.com");
   expected_result.push_back("snowwhite@stories.com");
 
@@ -38,12 +38,12 @@ TEST(Test_UserData, listAccounts) {
     ASSERT_STREQ(expected_result[n++].c_str(), i.c_str()) << "index: " << n;
   }
 
-  stringstream ss_d;
+  std::stringstream ss_d;
   ss_d << d;
   UserData e;
   ss_d >> e;
 
-  stringstream ss_e;
+  std::stringstream ss_e;
   ss_e << e;
 
   // Check that d and e are equal

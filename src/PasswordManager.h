@@ -26,19 +26,19 @@ public:
   PasswordManager();
   virtual ~PasswordManager();
   void start();
-  void execute(string cmd);
+  void execute(std::string cmd);
   bool signup();
   bool login();
   void logout();
-  void createPassword(string cmd);
-  void showPassword(string cmd);
-  void deletePassword(string cmd);
+  void createPassword(std::string cmd);
+  void showPassword(std::string cmd);
+  void deletePassword(std::string cmd);
   void showAccounts();
 
 private:
   Users users;
-  string prompt;
-  string loggedInUser;
+  std::string prompt;
+  std::string loggedInUser;
   bool isLoggedIn;
 };
 

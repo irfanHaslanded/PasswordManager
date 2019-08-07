@@ -9,17 +9,15 @@
 #include "../Storage.cpp"
 #include "../Users.cpp"
 
-using namespace std;
-
 namespace IrfanSec {
 Users TestUsers::testUser;
 
 void TestUsers::SetUp(void) {
   ASSERT_TRUE(testUser.createUser("Batman", "DarkKnight"));
   ASSERT_FALSE(testUser.createUser("Batman", "DarkKnight"));
-  string password = testUser.addAccount("Batman", "batman@bats.org");
+  std::string password = testUser.addAccount("Batman", "batman@bats.org");
 
-  string passwordGet = testUser.getPassword("Batman", "batman@bats.org");
+  std::string passwordGet = testUser.getPassword("Batman", "batman@bats.org");
   ASSERT_STREQ(password.c_str(), passwordGet.c_str());
 
   ASSERT_TRUE(testUser.createUser("AntMan", "AntsAreCool"));
@@ -39,15 +37,16 @@ TEST_F(TestUsers, basic) {
 }
 
 TEST_F(TestUsers, streams) {
-  stringstream out;
+  std::stringstream out;
   out << TestUsers::testUser;
   Users readBack;
   out >> readBack;
-  stringstream in;
+  std::stringstream in;
   in << readBack;
 
-  cout << __func__ << "." << __LINE__ << ": " << TestUsers::testUser << endl;
-  cout << __func__ << "." << __LINE__ << ": " << readBack << endl;
+  std::cout << __func__ << "." << __LINE__ << ": " << TestUsers::testUser
+            << std::endl;
+  std::cout << __func__ << "." << __LINE__ << ": " << readBack << std::endl;
   ASSERT_STREQ(out.str().c_str(), in.str().c_str());
 }
 
@@ -55,10 +54,10 @@ TEST_F(TestUsers, storage) {
   Storage::write(TestUsers::testUser);
   Users readBack = Storage::read();
 
-  stringstream out;
+  std::stringstream out;
   out << TestUsers::testUser;
 
-  stringstream in;
+  std::stringstream in;
   in << readBack;
 
   ASSERT_STREQ(out.str().c_str(), in.str().c_str());

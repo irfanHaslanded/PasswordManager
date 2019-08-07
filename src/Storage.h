@@ -14,12 +14,11 @@
 
 #include "Users.h"
 
-using namespace std;
 namespace IrfanSec {
 
 class Storage {
 private:
-  static const string dataFile;
+  static const std::string dataFile;
 
 public:
   /**

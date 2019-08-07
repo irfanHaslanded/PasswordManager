@@ -16,8 +16,6 @@
 #include <string>
 #include <vector>
 
-using namespace std;
-
 namespace IrfanSec {
 
 class UserData {
@@ -27,51 +25,52 @@ public:
    * @details Initializes the master_hash, master_salt, and app_salt with the
    * master_password input
    * */
-  UserData(string master_password);
+  UserData(std::string master_password);
   UserData();
 
   void reset();
 
-  const map<string, string> &getAccountData() const;
+  const std::map<std::string, std::string> &getAccountData() const;
 
-  const string &getAppHash() const;
+  const std::string &getAppHash() const;
 
-  const string &getAppSalt() const;
+  const std::string &getAppSalt() const;
 
-  const string &getMasterHash() const;
+  const std::string &getMasterHash() const;
 
-  const string &getMasterSalt() const;
+  const std::string &getMasterSalt() const;
 
   /**
    * @brief Derive a password for the specified account
    * */
-  string addAccount(const string &account);
+  std::string addAccount(const std::string &account);
 
-  bool removeAccount(const string &account);
+  bool removeAccount(const std::string &account);
 
   /**
    * @brief Validate the master password and login the user
    * @details Generate the app hash to create accounts
    * */
-  bool login(const string &password);
+  bool login(const std::string &password);
   void logout();
 
-  string getAccountPassword(const string &account);
+  std::string getAccountPassword(const std::string &account);
 
   /**
    * @brief Get a list of all accounts
    * */
-  vector<string> getAccounts();
+  std::vector<std::string> getAccounts();
 
-  friend ostream &operator<<(ostream &out, const UserData &data);
-  friend istream &operator>>(istream &in, UserData &data);
+  friend std::ostream &operator<<(std::ostream &out, const UserData &data);
+  friend std::istream &operator>>(std::istream &in, UserData &data);
 
 private:
-  string master_salt;
-  string master_hash;               // for validating users
-  string app_salt;                  // to derive app_hash
-  string app_hash;                  // to derive passwords
-  map<string, string> account_data; // all the accounts of this user
+  std::string master_salt;
+  std::string master_hash; // for validating users
+  std::string app_salt;    // to derive app_hash
+  std::string app_hash;    // to derive passwords
+  std::map<std::string, std::string>
+      account_data; // all the accounts of this user
 };
 
 } /* namespace irfan */

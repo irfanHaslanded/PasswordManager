@@ -13,29 +13,27 @@
 
 #include "UserData.h"
 
-using namespace std;
-
 namespace IrfanSec {
 class Users {
 public:
-  bool createUser(string name, string password);
-  bool deleteUser(string name);
-  bool doesUserExist(string name);
+  bool createUser(std::string name, std::string password);
+  bool deleteUser(std::string name);
+  bool doesUserExist(std::string name);
 
-  bool validatePassword(string name, string password);
+  bool validatePassword(std::string name, std::string password);
 
-  void logout(string name);
+  void logout(std::string name);
 
-  string addAccount(string username, string accountname);
-  string getPassword(string username, string accountname);
-  bool deleteAccount(string username, string accountname);
-  string showAccounts(string name);
+  std::string addAccount(std::string username, std::string accountname);
+  std::string getPassword(std::string username, std::string accountname);
+  bool deleteAccount(std::string username, std::string accountname);
+  std::string showAccounts(std::string name);
 
-  friend ostream &operator<<(ostream &out, const Users &users);
-  friend istream &operator>>(istream &in, Users &users);
+  friend std::ostream &operator<<(std::ostream &out, const Users &users);
+  friend std::istream &operator>>(std::istream &in, Users &users);
 
 private:
-  map<string, UserData> data;
+  std::map<std::string, UserData> data;
 };
 
 } /* namespace irfan */

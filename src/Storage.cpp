@@ -12,14 +12,14 @@
 
 namespace IrfanSec {
 
-const string Storage::dataFile = "PassMgr.dat";
+const std::string Storage::dataFile = "PassMgr.dat";
 
 void Storage::remove() {
   unlink(dataFile.c_str()); // delete the file from disk
 }
 
 void Storage::write(const Users &users) {
-  ofstream fout;
+  std::ofstream fout;
   fout.open(dataFile);
 
   if (!fout.is_open()) {
@@ -30,22 +30,23 @@ void Storage::write(const Users &users) {
 
   fout.flush();
   fout.close();
-}
+  }
 
-Users Storage::read() {
-  Users users;
+  Users Storage::read() {
+    Users users;
 
-  ifstream fin;
-  fin.open(dataFile);
+    std::ifstream fin;
+    fin.open(dataFile);
 
-  if (!fin.is_open()) { // Check that we successfully opened the file
+    if (!fin.is_open()) { // Check that we successfully opened the file
+      return users;
+    }
+
+    fin >> users;
+
+    fin.close();
     return users;
   }
 
-  fin >> users;
-
-  fin.close();
-  return users;
-}
 
 } /* namespace irfan */

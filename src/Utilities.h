@@ -18,8 +18,6 @@
 #include <stdlib.h>
 #include <string>
 
-using namespace std;
-
 namespace IrfanSec {
 
 class Utilities {
@@ -29,30 +27,33 @@ public:
    * */
   static void getRandomData(unsigned char *buf, size_t bytes);
 
-  static string get16ByteSalt();
-  static string get32ByteSalt();
+  static std::string get16ByteSalt();
+  static std::string get32ByteSalt();
 
   /**
    * @brief Return a independent strong password of 35 chars long
    * */
-  static string getStrongPassword();
+  static std::string getStrongPassword();
 
   /**
    * @brief User crypt_r to hash a password with the specified salt
    * @return Return the hash as a string
    * */
-  static string hashPassword(const string &salt, const string &password);
+  static std::string hashPassword(const std::string &salt,
+                                  const std::string &password);
 
   /**
    * @brief check if password would result in a specified hash
    * */
-  static bool verifyPassword(const string &password, const string &hash);
+  static bool verifyPassword(const std::string &password,
+                             const std::string &hash);
 
   /**
    * @brief Derive a password 35 chars long, from salt and password
    * @details PDKDF2 based on sha512
    * */
-  static string derivePassword(const string &salt, const string &password);
+  static std::string derivePassword(const std::string &salt,
+                                    const std::string &password);
 
   virtual ~Utilities();
 

@@ -9,7 +9,6 @@
 
 #include "../Utilities.cpp"
 
-using namespace std;
 using namespace testing;
 
 namespace IrfanSec {
@@ -23,24 +22,24 @@ TEST(TestUtilities, randomBytes) {
   ASSERT_STREQ("", buf);
 
   Utilities::getRandomData((unsigned char *)buf, sizeof(buf));
-  string text = textify((unsigned char *)buf, sizeof(buf));
-  cout << "textified random data is" << text << endl;
+  std::string text = textify((unsigned char *)buf, sizeof(buf));
+  std::cout << "textified random data is" << text << std::endl;
 
-  ASSERT_EQ(sizeof(buf) - 1, text.length()) << text << endl;
+  ASSERT_EQ(sizeof(buf) - 1, text.length()) << text << std::endl;
 }
 
 TEST(TestUtilities, salts) {
-  string salt = Utilities::get16ByteSalt();
-  cout << "16 byte salt is " << salt << endl;
-  ASSERT_EQ(20, salt.length()) << salt << endl;
+  std::string salt = Utilities::get16ByteSalt();
+  std::cout << "16 byte salt is " << salt << std::endl;
+  ASSERT_EQ(20, salt.length()) << salt << std::endl;
   salt = Utilities::get32ByteSalt();
-  cout << "32 byte salt is " << salt << endl;
-  ASSERT_EQ(36, salt.length()) << endl;
+  std::cout << "32 byte salt is " << salt << std::endl;
+  ASSERT_EQ(36, salt.length()) << std::endl;
 }
 
 TEST(TestUtilities, passwords) {
-  string password = Utilities::getStrongPassword();
-  cout << "35 byte password is " << password << endl;
+  std::string password = Utilities::getStrongPassword();
+  std::cout << "35 byte password is " << password << std::endl;
   ASSERT_EQ(35, password.length());
 }
 
