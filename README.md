@@ -3,7 +3,7 @@ A secure password manager, that can create very strong passwords for you, for a 
 
 # Details
 When you really need to keep your passwords safe.
-All application data is stored in a file passwdMgr.\<userName\>.dat
+All application data is stored in a file PassMgr.dat in the same dir
 
 1. There are 2 secrets derived from your master password
    a. The first secret is used for logging you into the program
@@ -12,6 +12,7 @@ All application data is stored in a file passwdMgr.\<userName\>.dat
 3. Two salts are stored for each secret
 4. Only the hash of the first secret is stored
 5. Only the user-accounts data is stored
+6. It is not possible to change the master-password. Make sure it is really secret!
 
 
 # Usage:
@@ -20,14 +21,14 @@ passwd-mgr
   ```
   login
   create-password username@site
-  show-passwprd username@site
+  show-password username@site
   show-accounts
   logout
   exit
   ```
 # Example
 ```
-C:\Users\snowWhite> passwd-mgr
+[irfan@Home] passwd-mgr
 passMgr> login
 Enter username: SnowWhite
 Enter Master Password: 
